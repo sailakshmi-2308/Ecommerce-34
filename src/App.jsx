@@ -7,6 +7,8 @@ import VerifyOtp from './pages/Verifyotp'
 import Products from './pages/Products'
 import Dashboard from './pages/Dashboard'
 import Navbar from './pages/Navbar'
+import AddProduct from './pages/AddProduct'
+import AdminProducts from './pages/AdminProducts'
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
         <Route path="/verify-otp" element={<VerifyOtp/>}/>
         <Route path="/products" element={<Products/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/add-product" element={<AddProduct/>}/>
+        <Route path="/admin-products" element={<AdminProducts/>}/>
       </Routes>
     </BrowserRouter>
   
