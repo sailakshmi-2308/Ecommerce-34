@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState} from 'react'
+import axios from 'axios'
 
 export default function AddProduct() {
 
@@ -9,7 +10,7 @@ export default function AddProduct() {
         About_item:"",
         quantity:"",
         price:"",
-        category
+        category:""
     })
 
     const [file,setFile]=useState(null)
@@ -23,9 +24,44 @@ export default function AddProduct() {
       )
 
     }
+
+    async function handleSubmit(e){
+      e.preventDefault();
+       try{
+
+        const data=new FormData();
+        data.append("title",formData.title);
+        data.append("Description",formData.Description)
+        data.append("About_item",formData.About_item)
+        data.append("quantity",formData.quantity)
+        data.append("price",formData.price)
+         data.append("category",formData.category)
+         data.append("file",file)
+
+
+         const result=await axios.post("https://ecomflask.duckdns.org/api/admin/add-item",data,
+          {
+            withCredentials:true,
+            headers:{
+              "Content-Type": "multipart/form-data"
+            }
+          }
+         )
+
+         console.log(result.data)
+         alert("product added successfully")
+
+
+       }
+       catch (error) {
+      console.log("error response:", error.response);
+      console.log(error.response?.data || error.message);
+    }
+  }
+
   return (
     <div>
-    <form>
+    <form onSubmit={handleSubmit}>
 
 
         <div>
@@ -91,7 +127,9 @@ export default function AddProduct() {
         </div>
 
 
-
+<button>
+  Add Product
+</button>
     </form>
     </div>
   )
