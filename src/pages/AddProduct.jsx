@@ -51,6 +51,17 @@ export default function AddProduct() {
          console.log(result.data)
          alert("product added successfully")
 
+         setFormData({
+          title:"",
+        Description:"",
+        About_item:"",
+        quantity:"",
+        price:"",
+        category:""
+         })
+
+         setFile(null)
+
 
        }
        catch (error) {
